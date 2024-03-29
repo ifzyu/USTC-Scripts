@@ -1,0 +1,46 @@
+name: Library Reserve
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 16 * * *"
+
+jobs:
+  reserve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Git
+        run: |
+          git config --global user.email fzh.yu@hotmail.com
+          git config --global user.name ifzyu
+
+      - name: Install Tesseract
+        run: |
+          sudo apt install tesseract-ocr
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+
+      - name: Install dependencies
+        run: |
+          pip3 install -r requirements.txt
+
+      - name: Run script
+        env:
+            STUID: ${{ secrets.STUID }}
+            PASSWORD: ${{ secrets.PASSWORD }}
+        run: |
+          python3 start.py ${{ env.DELTA }}
+
+      - name: Commit
+        run: |
+          git add library.ics
+          git commit -m "Daily reserve"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

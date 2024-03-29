@@ -1,0 +1,7 @@
+numpy
+Pillow
+pytesseract
+pytz
+PyYAML
+icalendar
+requests
