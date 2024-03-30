@@ -33,7 +33,7 @@ jobs:
             STUID: ${{ secrets.STUID }}
             PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          python3 start.py ${{ env.DELTA }}
+          python3 start.py ${{ vars.DELTA }}
 
       - name: Commit
         run: |
