@@ -2,8 +2,8 @@ name: Library Reserve
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "00 16 * * *"
+  # schedule:
+  #   - cron: "00 16 * * *"
 
 jobs:
   reserve:
@@ -33,7 +33,10 @@ jobs:
             STUID: ${{ secrets.STUID }}
             PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          python3 start.py ${{ vars.DELTA }}
+          for i in {0..30}; do
+            python3 start.py $i
+            sleep 1  # Add a delay if needed
+          done
 
       - name: Commit
         run: |
