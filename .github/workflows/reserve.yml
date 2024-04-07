@@ -33,7 +33,7 @@ jobs:
             STUID: ${{ secrets.STUID }}
             PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          for i in {0..30}; do
+          for i in {16..18}; do
             python3 start.py $i
             sleep 1  # Add a delay if needed
           done
