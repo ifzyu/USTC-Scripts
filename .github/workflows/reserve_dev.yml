@@ -23,7 +23,7 @@ jobs:
 
       - name: Run script
         env:
-            USERNAME: ${{ secrets.USERNAME }}
+            STUID: ${{ secrets.STUID }}
             PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           python3 start.py -1
