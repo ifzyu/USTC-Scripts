@@ -66,8 +66,7 @@ class LibraryReserve:
         try:
             url = self.appointment_url + "/affirmAppointment"
             data = {
-                "resTypeID": 1,
-                "PartionID": 34,
+                "PartionID": 38,
                 "theme": "【科研讨论】",
                 "otherAppointees": "",
                 "isChair": False
